@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block video %}active {% endblock video %}
+
+{% block title %} YouTube Downloader {% endblock title %}
+
+{% block body %}
+
+
+<div class="container">
+	<form action="/download" method="get">
+	  <div class="form-group"><br>
+	  	<h3>YouTube Downloader</h3><hr><br>
+	    <label for="exampleInputEmail1"><strong>YouTube Video Link</strong></label>
+	    <input name="url" type="url" class="form-control" id="" aria-describedby="textHelp">
+	    
+	    <center><button class="btn btn-primary m-2">Click</button></center>
+	  </div>
+
+	</form>
+</div>
+
+{% endblock body %}

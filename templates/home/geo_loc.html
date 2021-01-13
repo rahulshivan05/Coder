@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load i18n %}
+{% block title %} Geo-Locate | iCoder {% endblock title %}
+
+{% block geo %} active {% endblock geo %}
+
+{% block body %}
+	<div class="container">
+		<br>
+		<br>
+		<center><h1 class="align-center">Details of Zip Code : {{text}}</h1></center>
+		<br><hr>
+		<h3>Latitude is : {{location.latitude}}</h3><br>
+		<h3>Longitude is : {{location.longitude}}</h3><br>
+		<h3>Address is : {{location}}</h3><br>
+		<h3>Raw Address is : {{location.raw}}</h3>
+		<br><hr>
+		<h3>Yor Device Mac Address is => {{gma}}</h3>
+		
+	</div>
+
+{% endblock body %}

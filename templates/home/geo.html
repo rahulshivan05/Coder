@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load i18n %}
+{% block title %} Geo-Locate | iCoder {% endblock title %}
+
+{% block geo %} active {% endblock geo %}
+
+{% block body %}
+
+<div class="container">
+	<form action="/geo_loc" method="get">
+	  <div class="form-group"><br>
+	  	<h3>Geo Locator</h3><hr><br>
+	    <label for="exampleInputEmail1"><strong>Enter Zip Code or Pin Code Here !</strong></label>
+	    <input name="zipCode" type="text" class="form-control" id="" placeholder="Zip Code / Pin Code Here..." aria-describedby="textHelp">
+	    
+	    <center><button class="btn btn-primary m-2">Click</button></center>
+	  </div>
+
+	</form>
+</div>
+
+{% endblock body %}

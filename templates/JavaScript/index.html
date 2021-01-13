@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Tutorial</title>
+</head>
+<body>
+	<p id="someText"> </p>
+
+	<!-- <button class="button" onclick="age()">Click Me</button> -->
+
+	<h2 id="age"></h2>
+
+	<script type="text/javascript">
+		let students = `[
+			{
+				"name": "Rahul",
+				"age": 25,
+				"height": 150
+			},
+			{
+				"name": "Rohit",
+				"age": 12,
+				"height": 120
+			}
+
+		]`
+		console.log(JSON.parse(students)[0].height);
+	</script>
+
+	<!-- <script type="text/javascript" src="home.js"></script> -->
+</body>
+</html>

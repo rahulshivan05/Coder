@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Download Video {% endblock title %}
+
+
+{% block body %}
+
+<div class="container">
+	<br><br>
+	<center><h2 class="m-7">Download Your Video</h2></center>
+
+
+	<hr>
+
+	<div class="container">
+		<div class="embed-responsive embed-responsive-16by9">
+  		<iframe class="embed-responsive-item" src={{embed}} allowfullscreen></iframe>
+	</div>
+	</div>
+	<hr>
+
+	
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Resolutions</th>
+	      <th scope="col">Handle</th>
+	    </tr>
+	  </thead>
+
+	  {% for i in rsl %}
+
+<tbody>
+<tr>
+
+<td>{{i}}</td>
+<!--button form for download video -->
+<td> <form action="{% url 'download_complete' i %}" method="POST" class="post-form"> {% csrf_token %} <input type="submit" class="btn btn-success" value="DOWNLOAD"> </form> </td>
+</tr>
+</tbody>
+
+{% endfor %}
+	  <br>
+</table>
+
+<br>
+<br>
+<hr>
+<center><p>Designed By <b><i>Rahul Kumar</i></b></p></center>
+<br>
+<br>
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock body %}

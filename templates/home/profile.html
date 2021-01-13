@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %} my profile | iCoder {% endblock title %}
+
+
+{% block body %}
+
+<!-- MODAL -->
+<!-- <div class="ui modal mymodal">
+  <i class="close icon"></i>
+  <div class="header">
+    Profile Picture
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="{{profile.image.url}}">
+    </div>
+    <div class="description">
+      <div class="ui header">We've auto-chosen a profile image for you.</div>
+      <form action="" method="POST" class="ui form" enctype="multipart/form-data">
+      	{% csrf_token %}
+		{{form.as_p}}
+    </div>
+  </div>
+  <div class="actions">
+    <button type="submit" class="ui positive right labeled icon button">
+      Update
+    </button>
+  </div>
+</div> -->
+
+
+
+
+<div class="ui segment">
+	{% if confirm %}
+		<div class="ui green message">Your Profile has been updated</div>
+	{% endif %}
+	<h3>My Profile: {{request.user}}</h3>
+	<div class="ui grid">
+		<div class="row">
+			<div class="six wide column">
+				<img class="ui medium rounded image" src="{{profile.image.url}}">
+				<
+				<!-- <div class="row mt-5">
+					<button class="ui secondary button" id="modal-btn">Update Your Profile</button>
+				</div> -->
+			</div>
+			<div class="ten wide column">
+				<table class="ui table">
+					<tbody>
+						<tr>
+							<td>Username:</td>
+							<td>{{request.user}}</td>
+						</tr>
+						<tr>
+							<td>First Name:</td>
+							<td>{{profile.first_name}}</td>
+						</tr>
+						<tr>
+							<td>Last Name:</td>
+							<td>{{profile.last_name}}</td>
+						</tr>
+						<tr>
+							<td>Bio:</td>
+							<td>{{profile.bio}}</td>
+						</tr>
+						<!-- <tr>
+							<td>Number of Friends</td>
+							<td>{{profile.get_friends_no}}</td>
+						</tr> -->
+						<!-- <tr>
+							<td>Number of Posts</td>
+							<td>{{posts.get_all_authors_posts}}</td>
+						</tr>
+						<tr>
+							<td>Number of Likes given</td>
+							<td>{{profile.get_likes_given_no}}</td>
+						</tr>
+						<tr>
+							<td>Number of Likes received</td>
+							<td>{{profile.get_likes_received_no}}</td>
+						</tr> -->
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock body %}
+<!-- content ends here -->

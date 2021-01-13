@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %} iCoder: Home {% endblock title %} {% block homeactive %} active {% endblock homeactive %} {% block body %}
+<div class="container my-3">
+    <div class="jumbotron">
+        <h1 class="display-4">{% trans "Welcome to <b>iCoder</b>" %} </h1>
+        <p class="lead">{% trans "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information" %}.</p>
+        <hr class="my-4">
+        <p>{% trans "It uses utility classes for typography and spacing to space content out within the larger container" %}.</p>
+        <a class="btn btn-primary btn-lg" aria-label="Go to Blog" href="/blog/" role="button">{% trans "Go to Blog" %}</a>
+    </div>
+</div>
+
+<div class="container">
+  <h3>
+    {% get_current_language as LANGUAGE_CODE %}
+    <b>{{ LANGUAGE_CODE }} </b>
+  </h3><hr>
+  <!-- <a href="{% url 'admin:index' %}">{% url 'admin:index' %}</a> -->
+  <br>
+  <form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ redirect_to }}">
+    <select name="language" id="">
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
+
+      {% for language in languages %}
+        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+          {{ language.name_local }} ({{ language.code }})
+        </option>
+      {% endfor %}
+    </select>
+    <input type="submit" name="submit" value="{% trans 'Go' %}">
+
+  </form>
+
+</div>
+
+<div class="container my-3">
+	<h2>{% trans "Trending BlogPosts" %}:</h2>
+  {% for post in allPosts %}
+	<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{% trans "Article By" %}: {{post.author}}</strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+          <p class="card-text mb-auto">{{post.content|safe| truncatechars:500}}</p>
+          <div class="my-2">
+          <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">{% trans "Continue reading" %}</a>
+          </div>
+        </div>
+        <!-- <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div> -->
+      </div>
+      {% endfor %}
+</div>
+
+
+
+
+{% endblock body %}
